@@ -23,7 +23,7 @@ const  createAbrigo = async (req, res) => {
       return res.status(409).json({error: "Abrigo ja cadastrado."})
     }
     try{
-      const novoAbrigo = await abrigo.save()
+      const novoAbrigo = abrigo.save()
       res.status(201).json(novoAbrigo)
     } catch(err) {
       res.status(400).json({ message: err.message})
