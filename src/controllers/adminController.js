@@ -25,7 +25,7 @@ const  createAdmin = async (req, res) => {
       return res.status(409).json({error: "Administrador já cadastrado."})
     }
     try{
-      const novoAdmin = await admin.save()
+      const novoAdmin = admin.save()
       res.status(201).json(novoAdmin)
     } catch(err) {
       res.status(400).json({ message: err.message})
