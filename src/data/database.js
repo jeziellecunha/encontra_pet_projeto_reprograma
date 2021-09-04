@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
+//Pode conectar tanto localmente, quanto nas nuvens
+const MONGODB_URL = 'mongodb://localhost:27017/encontraPet-db' || process.env.MONGODB_URI
 
-//const MONGODB = process.env.MONGODB_URL
+
 
 const connect = () => {
-  mongoose.connect('mongodb://localhost:27017/encontraPet-db', {
+  mongoose.connect(MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
