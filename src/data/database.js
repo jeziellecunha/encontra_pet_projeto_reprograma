@@ -10,7 +10,7 @@ const connect = () => {
   useUnifiedTopology: true
 })
   .then(console.log('Database connected successfully.'))
-  .catch(err => console.err)
+  .catch(error => console.error(error))
 }
 
 module.exports = { connect }
