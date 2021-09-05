@@ -11,7 +11,7 @@ router.post("/", controller.createPet)
 router.patch("/nome/:id", controller.updateNome)
 router.patch("/especie/:id", controller.updateEspecie)
 router.patch("/idade/:id", controller.updateIdade)
-// router.patch("/sexo/:id", controller.updateSexo)
+router.patch("/sexo/:id", controller.updateSexo)
 // router.patch("/castracao/:id", controller.updateCastração)
 // router.patch("/abrigo/:id", controller.updateAbrigo)
 
