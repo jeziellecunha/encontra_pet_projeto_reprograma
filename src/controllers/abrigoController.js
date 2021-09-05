@@ -9,6 +9,12 @@ const getById = async (req, res) => {
     const abrigo = await Abrigo.findById(req.params.id)
     res.status(200).json(abrigo)
 }
+//todo consertar
+// const getByEnd = async (req, res) => {
+//     console.log(req.query);
+//   //  const abrigo = await Abrigo.findOne(req.query.endereco)
+//     //res.status(200).json(abrigo)
+// }
 const  createAbrigo = async (req, res) => {
     const abrigo = new Abrigo({
         _id: new mongoose.Types.ObjectId(),
@@ -23,10 +29,10 @@ const  createAbrigo = async (req, res) => {
       return res.status(409).json({error: "Abrigo ja cadastrado."})
     }
     try{
-      const novoAbrigo = abrigo.save()
+      const novoAbrigo = await abrigo.save()
       res.status(201).json(novoAbrigo)
-    } catch(err) {
-      res.status(400).json({ message: err.message})
+    } catch(error) {
+      res.status(400).json({ message: error.message})
     }
 }
 
@@ -41,8 +47,8 @@ const updateNome = async (req, res) => {
         }
         const abrigoAtualizado = await abrigo.save()
         res.status(200).json(abrigoAtualizado)
-    }catch (err){
-        res.status(500).json({ message: err.message})
+    }catch (error){
+        res.status(500).json({ message: error.message})
     }
 }
 
@@ -57,8 +63,8 @@ const updateEndereco = async (req, res) => {
         }
         const abrigoAtualizado = await abrigo.save()
         res.status(200).json(abrigoAtualizado)
-    }catch (err){
-        res.status(500).json({ message: err.message})
+    }catch (error){
+        res.status(500).json({ message: error.message})
     }
 }
 const updateFone = async (req, res) => {
@@ -72,8 +78,8 @@ const updateFone = async (req, res) => {
         }
         const abrigoAtualizado = await abrigo.save()
         res.status(200).json(abrigoAtualizado)
-    }catch (err){
-        res.status(500).json({ message: err.message})
+    }catch (error){
+        res.status(500).json({ message: error.message})
     }
 }
 const updateEmail = async (req, res) => {
@@ -87,8 +93,8 @@ const updateEmail = async (req, res) => {
         }
         const abrigoAtualizado = await abrigo.save()
         res.status(200).json(abrigoAtualizado)
-    }catch (err){
-        res.status(500).json({ message: err.message})
+    }catch (error){
+        res.status(500).json({ message: error.message})
     }
 }
 
@@ -100,14 +106,15 @@ const deleteById = async (req, res) => {
         try{
             await abrigo.remove()
             res.status(200).json({ message: "Abrigo excluído com sucesso." })
-        } catch (err){
-            res.status(500).json({ message: err.message})
+        } catch (error){
+            res.status(500).json({ message: error.message})
         }
 }
 
 module.exports = {
     getAll,
     getById,
+    // getByEnd,
     createAbrigo,
     updateNome,
     updateEndereco,

@@ -14,7 +14,7 @@ const petSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    genero: {
+    sexo: {
         type: String,
         required: true
     },
