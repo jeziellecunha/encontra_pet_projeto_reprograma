@@ -37,21 +37,21 @@ const  createPet = async (req, res) => {
       res.status(400).json({ message: error.message})
     }
 }
-// const updateNome = async (req, res) => {
-//   try{
-//       const admin = await Admin.findById(req.params.id)
-//       if(admin == null){
-//           return res.status(404).json({message: "Administrador não encontrado."})
-//       }
-//       if(req.body.nome != null){
-//           admin.nome = req.body.nome
-//       }
-//       const adminAtualizado = await admin.save()
-//       res.status(200).json(adminAtualizado)
-//   }catch (error){
-//       res.status(500).json({ message: error.message})
-//   }
-// }
+const updateNome = async (req, res) => {
+  try{
+      const pet = await Pet.findById(req.params.id)
+      if(pet == null){
+          return res.status(404).json({message: "Animal não encontrado."})
+      }
+      if(req.body.nome != null){
+          pet.nome = req.body.nome
+      }
+      const petAtualizado = await pet.save()
+      res.status(200).json(petAtualizado)
+  }catch (error){
+      res.status(500).json({ message: error.message})
+  }
+}
 // const updateEndereco = async (req, res) => {
 //   try{
 //       const admin = await Admin.findById(req.params.id)
@@ -115,7 +115,7 @@ module.exports = {
     getByQueryParameter,
     getById,
     createPet,
-    // updateNome,
+    updateNome,
     // updateEspecie,
     // updateIdade,
     // updateSexo,
