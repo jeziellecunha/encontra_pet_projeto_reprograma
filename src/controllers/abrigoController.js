@@ -5,16 +5,16 @@ const getAll = async (req, res) => {
     const abrigos = await Abrigo.find()
     res.status(200).json(abrigos)
 }
+//to do: consertar buscar abrigo para buscar por qualquer parâmetro
+const getByQueryParameter = async (req, res) => {
+    console.log(req.query);
+   const abrigo = await Abrigo.find({nome:{ $regex: '.*' + req.query.nome + '.*' }})
+    res.status(200).json(abrigo)
+}
 const getById = async (req, res) => {
     const abrigo = await Abrigo.findById(req.params.id)
     res.status(200).json(abrigo)
 }
-//todo consertar
-// const getByEnd = async (req, res) => {
-//     console.log(req.query);
-//   //  const abrigo = await Abrigo.findOne(req.query.endereco)
-//     //res.status(200).json(abrigo)
-// }
 const  createAbrigo = async (req, res) => {
     const abrigo = new Abrigo({
         _id: new mongoose.Types.ObjectId(),
@@ -114,7 +114,7 @@ const deleteById = async (req, res) => {
 module.exports = {
     getAll,
     getById,
-    // getByEnd,
+    getByQueryParameter,
     createAbrigo,
     updateNome,
     updateEndereco,

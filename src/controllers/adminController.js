@@ -2,14 +2,13 @@ const mongoose = require('mongoose');
 const Admin= require('../models/admin');
 
 const getAll = async (req, res) => {
-    const admin = await Admin.find().populate('abrigo')
-    res.status(200).json(admin)
+    const allAdmin = await Admin.find().populate('abrigo')
+    res.status(200).json(allAdmin)
 }
 const getById = async (req, res) => {
     const admin = await Admin.findById(req.params.id).populate('abrigo')
     res.status(200).json(admin)
 } 
-
 const  createAdmin = async (req, res) => {
     const admin = new Admin({
         _id: new mongoose.Types.ObjectId(),

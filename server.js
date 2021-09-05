@@ -15,13 +15,13 @@ app.use('/abrigo', abrigoRouter);
 const adminRouter = require("./src/routes/admin.routes");
 app.use('/admin', adminRouter);
 
-// const petRouter = require("./src/routes/pet.routes");
-// app.use('/pet', petRouter);
+const petRouter = require("./src/routes/pet.routes");
+app.use('/pet', petRouter);
 
-// const tutorRouter = require("./src/routes/tutor.routes");
-// app.use('/tutor', tutorRouter)
+const tutorRouter = require("./src/routes/tutor.routes");
+app.use('/tutor', tutorRouter)
 
-//require('dotenv-safe').config();
+
 
 app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
 
