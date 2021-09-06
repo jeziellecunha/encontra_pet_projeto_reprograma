@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 //Pode conectar tanto localmente, quanto nas nuvens
-const MONGODB_URL = 'mongodb://localhost:27017/encontraPet-db' || process.env.MONGODB_URI
+const MONGODB_URL =  process.env.MONGODB_URI || 'mongodb://localhost:27017/encontraPet-db' 
 
 
 
