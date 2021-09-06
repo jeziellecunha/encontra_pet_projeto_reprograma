@@ -112,21 +112,21 @@ const updateCastracao = async (req, res) => {
       res.status(500).json({ message: error.message})
   }
 }
-// const updateAbrigo = async (req, res) => {
-//   try{
-//       const admin = await Admin.findById(req.params.id)
-//       if(admin == null){
-//           return res.status(404).json({message: "Administrador não encontrado."})
-//       }
-//       if(req.body.abrigo != null){
-//           admin.abrigo = req.body.abrigo
-//       }
-//       const adminAtualizado = await admin.save()
-//       res.status(200).json(adminAtualizado)
-//   }catch (error){
-//       res.status(500).json({ message: error.message})
-//   }
-// }
+const updateAbrigo = async (req, res) => {
+  try{
+      const pet = await Pet.findById(req.params.id)
+      if(pet == null){
+          return res.status(404).json({message: "Animal não encontrado."})
+      }
+      if(req.body.abrigo != null){
+          pet.abrigo = req.body.abrigo
+      }
+      const petAtualizado = await pet.save()
+      res.status(200).json(petAtualizado)
+  }catch (error){
+      res.status(500).json({ message: error.message})
+  }
+}
 // const deleteById = async (req, res) => {
 //   const admin = await Admin.findById(req.params.id)
 //       if(admin == null){
@@ -150,6 +150,6 @@ module.exports = {
     updateIdade,
     updateSexo,
     updateCastracao,
-    // updateAbrigo,
+    updateAbrigo,
     // deleteById
 }
