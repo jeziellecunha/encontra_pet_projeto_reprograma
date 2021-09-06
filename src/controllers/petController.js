@@ -127,18 +127,18 @@ const updateAbrigo = async (req, res) => {
       res.status(500).json({ message: error.message})
   }
 }
-// const deleteById = async (req, res) => {
-//   const admin = await Admin.findById(req.params.id)
-//       if(admin == null){
-//           return res.status(404).json({message: "Administrador não encontrado."})
-//       }
-//       try{
-//           await admin.remove()
-//           res.status(200).json({ message: "Administrador excluído com sucesso." })
-//       } catch (error){
-//           res.status(500).json({ message: error.message})
-//       }
-// }
+const deleteById = async (req, res) => {
+  const pet = await Pet.findById(req.params.id)
+      if(pet == null){
+          return res.status(404).json({message: "Animal não encontrado."})
+      }
+      try{
+          await pet.remove()
+          res.status(200).json({ message: "Cadastro do animal excluído com sucesso." })
+      } catch (error){
+          res.status(500).json({ message: error.message})
+      }
+}
 
 module.exports = {
     getAll,
@@ -151,5 +151,5 @@ module.exports = {
     updateSexo,
     updateCastracao,
     updateAbrigo,
-    // deleteById
+    deleteById
 }

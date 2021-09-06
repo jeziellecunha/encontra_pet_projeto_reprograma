@@ -15,7 +15,7 @@ router.patch("/sexo/:id", controller.updateSexo)
 router.patch("/castracao/:id", controller.updateCastracao)
 router.patch("/abrigo/:id", controller.updateAbrigo)
 
-// router.delete("/:id", controller.deleteById)
+router.delete("/:id", controller.deleteById)
 
 
 module.exports = router
