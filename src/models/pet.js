@@ -8,15 +8,18 @@ const petSchema = new mongoose.Schema({
     },
     especie: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     idade: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     sexo: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     castracao: {
         type: Boolean,

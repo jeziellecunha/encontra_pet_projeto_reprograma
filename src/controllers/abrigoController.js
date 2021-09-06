@@ -6,9 +6,8 @@ const getAll = async (req, res) => {
     res.status(200).json(abrigos)
 }
 //to do: consertar buscar abrigo para buscar por qualquer parâmetro
-const getByQueryParameter = async (req, res) => {
-    console.log(req.query);
-   const abrigo = await Abrigo.find({nome:{ $regex: '.*' + req.query.nome + '.*' }})
+const getByEndereco = async (req, res) => {
+   const abrigo = await Abrigo.find({endereco:{ $regex: '.*' + req.query.endereco.toLowerCase() + '.*' }})
     res.status(200).json(abrigo)
 }
 const getById = async (req, res) => {
@@ -111,10 +110,11 @@ const deleteById = async (req, res) => {
         }
 }
 
+
 module.exports = {
     getAll,
     getById,
-    getByQueryParameter,
+    getByEndereco,
     createAbrigo,
     updateNome,
     updateEndereco,

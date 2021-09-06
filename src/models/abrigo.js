@@ -8,7 +8,8 @@ const abrigoSchema = new mongoose.Schema({
     },
     endereco: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     fone: {
         type: String,
