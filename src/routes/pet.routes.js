@@ -3,7 +3,7 @@ const router = express.Router();
 const controller = require("../controllers/petController");
 
 router.get("/", controller.getAll)
-router.get("/busca", controller.getByQueryParameter)
+router.get("/busca", controller.getPetByParameter)
 router.get("/:id", controller.getById)
 
 router.post("/", controller.createPet)

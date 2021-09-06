@@ -8,7 +8,7 @@ router.get("/oi", (req, resp)=>{
 
 
 router.get("/", controller.getAll)
-router.get("/busca", controller.getByQueryParameter)
+router.get("/busca", controller.getByEndereco)
 router.get("/:id", controller.getById)
 
 router.post("/", controller.createAbrigo)
