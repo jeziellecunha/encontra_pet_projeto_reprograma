@@ -12,7 +12,9 @@ const getPetByParameter = async (req, res) => {
     if (prop == "sexo") {
       consulta.sexo = { $regex: ".*" + req.query[prop].toLowerCase() + ".*" };
     } else if (prop == "especie") {
-      consulta.especie = { $regex: ".*" + req.query[prop].toLowerCase() + ".*" };
+      consulta.especie = {
+        $regex: ".*" + req.query[prop].toLowerCase() + ".*",
+      };
     } else if (prop == "idade") {
       consulta.idade = { $regex: ".*" + req.query[prop].toLowerCase() + ".*" };
     } else if (prop == "castracao") {
@@ -25,6 +27,20 @@ const getPetByParameter = async (req, res) => {
 const getById = async (req, res) => {
   const pet = await Pet.findById(req.params.id).populate("abrigo");
   res.status(200).json(pet);
+};
+const getAllPetByAbrigo = async (req, res) => {
+  try {
+    const pets = await Pet.find().populate("abrigo");
+    const filterpets = pets.filter((pet) => pet.abrigo._id == req.body.abrigo);
+
+    if (filterpets.length == 0) {
+      return res.status(409).json({ error: "Nenhum animal encontrado." });
+    }
+
+    return res.status(200).json(filterpets);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 const createPet = async (req, res) => {
   const pet = new Pet({
@@ -157,6 +173,7 @@ module.exports = {
   getAll,
   getPetByParameter,
   getById,
+  getAllPetByAbrigo,
   createPet,
   updateNome,
   updateEspecie,
