@@ -95,25 +95,21 @@ Esta API está sendo escutada na ``porta 8080 `` e para que as rotas possam ser 
    |	|
    |	|- 📁 data
    |     	    |- 📄 database.js
-   |
    |	|- 📁 controllers
    |     	    |- 📄 adminController.js
    |     	    |- 📄 tutorController.js
    |     	    |- 📄 abrigoController.js
    |     	    |- 📄 petController.js
-   |
    |	|- 📁 models
    |     	    |- 📄 admin.js
    |     	    |- 📄 tutor.js
    |     	    |- 📄 abrigo.js
    |     	    |- 📄 pet.js
-   |
    |	|- 📁 routes
    |     	    |- 📄 admin.routes.js
    |     	    |- 📄 tutor.routes.js
    |     	    |- 📄 abrigo.routes.js
    |     	    |- 📄 pet.routes.js
-   |
    |- 📄 .env
    |- 📄 .env.example
    |- 📄 .gitignore
