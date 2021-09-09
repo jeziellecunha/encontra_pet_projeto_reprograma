@@ -4,7 +4,9 @@ const controller = require("../controllers/petController");
 
 router.get("/", controller.getAll)
 router.get("/busca", controller.getPetByParameter)
+router.get("/abrigo", controller.getAllPetByAbrigo)
 router.get("/:id", controller.getById)
+
 
 router.post("/", controller.createPet)
 
