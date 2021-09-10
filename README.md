@@ -1,158 +1,132 @@
-# Projeto Final-Encontra Pet 
+# Projeto Final - Encontra Pet 
 
-# Autora: Jezielle Cunha
+Autora: Jezielle Cunha
+---
 
-
-
-
-
-### Sumário###
+![Animais para adoção](animaisdomestico.jpg)
 
 
 
-### Tema proposto
 
-Facilitar o encontro de animais de estimação para adoção nas instituições que abrigam animais abandonados. A aplicação torna possível um pretendente a tutor buscar por um animalzinho filtrando por abrigo, espécie (se gato ou cachorro), sexo e se castrado ou não.  
+### Sumário:
 
-### Apresentação ###
+##### [Tema Proposto](#tema-proposto)
 
-O "Encontra Pet" é um projeto de conclusão de curso para o Bootcamp Back-end da {reprograma}. É uma API que tem como objetivo reunir e disponibilizar informações sobre cães e gatos que precisam ser adotados para consulta de pretendentes a tutores. E com isso facilitar o proccesso de adoção responsável.
+##### [Apresentação](#apresentação)
+
+##### [Contextualização](#contextualização)
+
+##### [Rotas/EndPoints](#rotasendpoints)
+
+##### [Desenvolvimento](#desenvolvimento)
+
+##### [Regras de Negócio](#regras-de-negócio)
+
+##### [Tecnologias Utilizadas](#tecnologias-utilizadas)
+
+##### [Implementações Futuras](#implementações-futuras)
+
+##### [Referências](#referências)
+
+
+### Tema Proposto
+
+Facilitar o encontro de animais de estimação para adoção nas instituições que abrigam animais abandonados. A aplicação torna possível um pretendente a tutor procurar por um animalzinho sem sair de casa. Podendo realizar buscas filtrando por abrigo, espécie (se gato ou cachorro), sexo e se castrado ou não.  
+
+### Apresentação 
+
+O "Encontra Pet" é um projeto de conclusão de curso para o Bootcamp Back-end da {reprograma} constituído por uma API Rest que tem como objetivo reunir e disponibilizar informações sobre cães e gatos que precisam ser adotados para consulta de pretendentes a tutores. E com isso facilitar o proccesso de adoção responsável.
 
 O intuíto é que a aplicação seja como uma ponte entre as pessoas que pretendem adotar e os animais disponíveis para adoção que estão em abrigos. Aqueles que têm o intuito de adotar, poderão buscar os pets por meio de alguns filtros e  encontrar um novo amiguinho segundo suas preferências e/ou necessidades. 
 
-### Contextualização###
+### Contextualização
 
-
-
+A população de animais abandonados se multiplica nos espaços urbanos. Situação que se agravou com a chegada da pandemia de Convid-19, pois muitos tutores abandonaram seus animais domésticos por não conseguir mantê-los, dentre outros motivos. O resgate e a adoção são para muitos deles a única chance de sobrevivência, e para todos eles, a únida possibilidade de uma vida digna.
+A solução viável para sanar esse problema ambiental e de saúde pública é a união de esforços em ações de resgate, acolhimento, tratamento, castração e encaminhamento para adoção responsável. Para esta última ação citada, a API Encontra Pet se dispõe a ajudar.
 ### Rotas/EndPoints
 
-Esta API está sendo escutada na ``porta 8080 `` e para que as rotas possam ser acessadas localmente é necessário utilizar ``http://localhost:8080``antes dos endpoints de requisição.
+Esta API está sendo escutada localmente na ``porta 8080 `` e para que as rotas possam ser acessadas é necessário utilizar ``http://localhost:8080`` antes dos endpoints de requisição.
 
-* GET /todos 
-  Rota que retorna uma lista com todos os pets.
-  HTTP 200 OK
-* GET /pet/:id 
-  Rota que retorna os detalhes sobre algum pet, baseado no seu id.
-  HTTP 200 OK
-* GET /pet/cachorro
-  Rota que retorna todos os cachorros.
-  HTTP 200 OK
-* GET /pet/gato
-  Rota que retorna todos os gatos.
-  HTTP 200 OK
-* GET /abrigo/:id 
-  Rota que retorna os detalhes sobre algum abrigo, baseado no seu id.
-  HTTP 200 OK
-* GET /admin/:id 
-  Rota que retorna os detalhes sobre algum administrador, baseado no seu id.
-  HTTP 200 OK
-* GET /tutor/:id 
-  Rota que retorna os detalhes sobre algum tutor, baseado no seu id.
-  HTTP 200 OK
-* POST /pet 
-  Rota que recebe um novo pet, adiciona no database e retorna o documento criado.
-  HTTP 201 CREATED
-* POST /abrigo 
-  Rota que recebe um novo abrigo, adiciona no database e retorna o documento criado.
-  HTTP 201 CREATED
-* POST /admin 
-  Rota que recebe um novo admin, adiciona no database e retorna o documento criado.
-  HTTP 201 CREATED
-* POST /tutor 
-  Rota que recebe um novo tutor, adiciona no database e retorna o documento criado.
-  HTTP 201 CREATED
-* PUT /pet/:id 
-  Rota que atualiza alguma característica de um determinado pet e retorna o documento atualizado.
-  HTTP 200 OK
-* PUT /abrigo/:id 
-  Rota que atualiza alguma característica de um determinado abrigo e retorna o documento atualizado.
-  HTTP 200 OK
-* PUT /admin/:id 
-  Rota que atualiza alguma característica de um determinado admin e retorna o documento atualizado.
-  HTTP 200 OK
-* PUT /tutor/:id 
-  Rota que atualiza alguma característica de um determinado tutor e retorna o documento atualizado.
-  HTTP 200 OK
-* DELETE /pet/:id 
-  Rota que deleta um pet baseado em seu id.
-  HTTP 204 NO CONTENT
-* DELETE /abrigo/:id 
-  Rota que deleta um abrigo baseado em seu id.
-  HTTP 204 NO CONTENT
-* DELETE /admin/:id 
-  Rota que deleta um admin baseado em seu id.
-  HTTP 204 NO CONTENT
-* DELETE /tutor/:id 
-  Rota que deleta um tutor baseado em seu id.
-  HTTP 204 NO CONTENT
+|VERBO | ROTA | DESCRIÇÃO|
+|------|------|----------|
+|GET | /pet | Retorna uma lista com todos os pets.|
+|GET | /pet/:id | Retorna um pet pelo ID requerido.|
+|GET | /pet/busca | Retorna uma lista com os pets filtrados por características.|
+|GET | /pet/abrigo | Retorna uma lista com todos os pets de um abrigo requerido.
+|GET | /abrigo | Retorna uma lista com todos os abrigos.|
+|GET | /abrigo/:id | Retorna uma abrigo pelo ID requerido. |
+|GET | /abrigo/busca | Retorna uma lista com abrigos pela busca de endereço. |
+|GET | /admin | Retorna uma lista com todos os administradores.|
+|GET | /admin/:id | Retorna um administrador pelo ID requerido. |
+|GET | /tutor | Retorna uma lista com todos os tutors.|
+|GET | /tutor/:id | Retorna um tutor pelo ID requerido. |
+|POST | /pet | Cria um novo cadastro com base no petSchema.|
+|POST | /abrigo | Cria um novo cadastro com base no abrigoSchema.|
+|POST | /admin | Cria um novo cadastro com base no adminSchema.|
+|POST | /tutor | Cria um novo cadastro com base no tutorSchema.|
+|PATCH | /pet/:id | Edita um pet correspondente ao ID requerido.|
+|PATCH | /abrigo/:id | Edita um abrigo correspondente ao ID requerido.|
+|PATCH | /admin/:id | Edita um administrador correspondente ao ID requerido.|
+|PATCH | /tutot/:id | Edita um tutot correspondente ao ID requerido.|
+|DELETE | /pet/:id | Exclui o cadastro de um pet correspondente ao ID requerido.|
+|DELETE | /abrigo/:id |Exclui o cadastro de um abrigo correspondente ao ID requerido.|
+|DELETE | /admin/:id | Exclui o cadastro de um admin correspondente ao ID requerido.|
+|DELETE | /tutor/:id | Exclui o cadastro de um tutor correspondente ao ID requerido.|
 
 ### Desenvolvimento
 **Arquitetura MVC **
-
-📁 projetoEncontraPet
-   |
-   |-  📁 src
-   |	|
-   |	|- 📁 data
-   |     	    |- 📄 database.js
-   |	|- 📁 controllers
-   |     	    |- 📄 adminController.js
-   |     	    |- 📄 tutorController.js
-   |     	    |- 📄 abrigoController.js
-   |     	    |- 📄 petController.js
-   |	|- 📁 models
-   |     	    |- 📄 admin.js
-   |     	    |- 📄 tutor.js
-   |     	    |- 📄 abrigo.js
-   |     	    |- 📄 pet.js
-   |	|- 📁 routes
-   |     	    |- 📄 admin.routes.js
-   |     	    |- 📄 tutor.routes.js
-   |     	    |- 📄 abrigo.routes.js
-   |     	    |- 📄 pet.routes.js
-   |- 📄 .env
-   |- 📄 .env.example
-   |- 📄 .gitignore
-   |- 📄 package.json
-   |- 📄 package-lock.json
-   |- 📄 server.js
+![Arquitetura MVC](arquiteturaMVC-EncontraPet.jpg)
 
 
 ### Regras de Negócio ###
 * Para criar um novo administrador ou novo pet, será necessário vincular a um abrigo já existente no sistema no momento da criação, utilizando o numero do id do abrigo correspondente no corpo da requisição.
+* O usuário final (Tutor) poderá realizar as buscas de todos os abrigos, todos os pets, buscar os abrigos por endereço, buscar todos os pets de determinado abrigo e buscar o pet por qualquer característica.
 
-### Tecnologias utilizadas no projeto
-**Ferramentas e descrições**
-* JavaScript: Linguagem de programação.
-* Node JS: Ambiente de execução do JavaScript.
-* Express: Framework Node JS.
-* Mongoose: Dependência que interage com o MongoDB para a conexão da database, criação do model e das collections.
-* Nodemon: Dependência que observa as atualizações realizadas nos documentos para rodar o servidor automaticamente.
-* Cors: Dependência que facilita a permissão de acesso à API.
-* Dotenv: Dependência que ajuda a proteger dados sensíveis.
-* npm: Gerenciador de pacotes.
-* MongoDb: Banco de dados não relacional orientado a documentos.
-* Robo 3T: Interface gráfica para verificar se os dados foram persistidos na database.
-* Postman: Interface gráfica para realizar os testes.
-* Git/GitHub: Versionamento de código.
-* Heroku:
+### Tecnologias utilizadas
+
+                                                                                         
+|Ferramenta | Descrição |
+|-----------|-----------|
+|JavaScript | Linguagem de programação. |
+Node JS | Ambiente de execução do JavaScript. |
+|Express | Framework Node JS. |
+|Mongoose | Dependência que interage com o MongoDB para a conexão da database, criação do model e das collections. |
+|Nodemon | Dependência que observa as atualizações realizadas nos documentos para rodar o    servidor automaticamente. |
+|Cors | Dependência que facilita a permissão de acesso à API. |
+|Dotenv | Dependência que ajuda a proteger dados sensíveis.           
+|npm |  Gerenciador de pacotes. |
+|MongoDB |  Banco de dados não relacional orientado a documentos. |
+|Robo 3T | Interface gráfica para verificar se os dados foram persistidos na database. |
+|Postman | Interface gráfica para realizar os testes. |
+|Git/GitHub | Versionamento de código. |
+|Heroku | Plataforma em nuvem para deploy. |                        
+                                                       
+
+### Implementações futuras
+
+* Validação/autenticação dos acessos;
+* Refatorar o código para retirar repetições;Implementar front-end;
+* Nova funcionalidade: Apadrinhamento;
+* Nova funcionalidade: Campanha Educativa de Adoção Responsável;
+* Nova funcionalidade: Campanha Divulgação de castração gratuita;
+* Consumir outras API’s ex: Google Maps e Viacep;
+* Incluir paginação na API.
 
 
 
-### Implementações futuras ###
+### Referências
 
+Adoção e abandono de animais domésticos aumentam durante a pandemia;<https://agenciabrasil.ebc.com.br/geral/noticia/2020-10/adocao-e-abandono-de-animais-domesticos-aumentam-durante-pandemia>
 
+Adote um vira-lata;<https://www.ufpe.br/documents/1523864/1524082/Adote_Abandono_UFPE_folder_montado_E02+%281%29.pdf/83dea80f-e3df-45a7-9380-c52826edc7a1>
 
-### Instruções para instalação e contribuição no projeto###
+ONGs e poder público se unem contra do drama de abandono de animais;<https://www.folhape.com.br/noticias/ongs-e-poder-publico-se-unem-contra-o-drama-de-abandono-de-animais/116808/>
 
+Projeto de Lei Alepe;<https://www.alepe.pe.gov.br/proposicao-texto-completo/?docid=6863&tipoprop=p>
 
+Resgate de animais: o amor que salva vidas.<https://www.folhape.com.br/colunistas/folha-pet/resgate-animal-um-amor-que-salva-vidas/25601/>
 
-
-
-### Referências ###
-
-
-
+[Heroku](https://encontrapet-projeto.herokuapp.com/)
 
 
 
