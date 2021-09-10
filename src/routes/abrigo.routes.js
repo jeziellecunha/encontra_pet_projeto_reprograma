@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/abrigoController");
 
-router.get("/oi", (req, resp)=>{
-    resp.status(200).send({"mensagem":"oi to aqui ta funcionando "})
+router.get("/inicio", (req, resp)=>{
+    resp.status(200).send({"mensagem":"Bem-vinda à API Encontra Pet e encontre seu melhor amigo."})
 })
 
 
