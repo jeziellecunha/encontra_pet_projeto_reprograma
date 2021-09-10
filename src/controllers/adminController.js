@@ -4,11 +4,11 @@ const Admin= require('../models/admin');
 const getAll = async (req, res) => {
     const allAdmin = await Admin.find().populate('abrigo')
     res.status(200).json(allAdmin)
-}
+};
 const getById = async (req, res) => {
     const admin = await Admin.findById(req.params.id).populate('abrigo')
     res.status(200).json(admin)
-} 
+}; 
 const  createAdmin = async (req, res) => {
     const admin = new Admin({
         _id: new mongoose.Types.ObjectId(),
@@ -29,82 +29,34 @@ const  createAdmin = async (req, res) => {
     } catch(error) {
       res.status(400).json({ message: error.message})
     }
-}
-const updateNome = async (req, res) => {
-  try{
-      const admin = await Admin.findById(req.params.id)
-      if(admin == null){
-          return res.status(404).json({message: "Administrador não encontrado."})
+};
+const updateAdmin = async (req, res) => {
+    try {
+      const admin = await Admin.findById(req.params.id);
+      if (admin == null)
+        return res.status(404).json({ message: "administrador não encontrado." });
+  
+      for (var prop in req.body) {
+        if (prop == "nome") {
+          admin.nome = req.body[prop];
+        } else if (prop == "endereco") {
+          admin.endereco = req.body[prop];
+        } else if (prop == "fone") {
+          admin.fone = req.body[prop];
+        } else if (prop == "email") {
+          admin.email = req.body[prop];
+        } else if (prop == "abrigo") {
+            admin.abrigo = req.body[prop];
+          } 
       }
-      if(req.body.nome != null){
-          admin.nome = req.body.nome
-      }
-      const adminAtualizado = await admin.save()
-      res.status(200).json(adminAtualizado)
-  }catch (error){
-      res.status(500).json({ message: error.message})
-  }
-}
-const updateEndereco = async (req, res) => {
-  try{
-      const admin = await Admin.findById(req.params.id)
-      if(admin == null){
-          return res.status(404).json({message: "Administrador não encontrado."})
-      }
-      if(req.body.endereco != null){
-          admin.endereco = req.body.endereco
-      }
-      const adminAtualizado = await admin.save()
-      res.status(200).json(adminAtualizado)
-  }catch (error){
-      res.status(500).json({ message: error.message})
-  }
-}
-const updateFone = async (req, res) => {
-  try{
-      const admin = await Admin.findById(req.params.id)
-      if(admin == null){
-          return res.status(404).json({message: "Administrador não encontrado."})
-      }
-      if(req.body.fone != null){
-          admin.fone = req.body.fone
-      }
-      const adminAtualizado = await admin.save()
-      res.status(200).json(adminAtualizado)
-  }catch (error){
-      res.status(500).json({ message: error.message})
-  }
-}
-const updateEmail = async (req, res) => {
-  try{
-      const admin = await Admin.findById(req.params.id)
-      if(admin == null){
-          return res.status(404).json({message: "Administrador não encontrado."})
-      }
-      if(req.body.email != null){
-          admin.email = req.body.email
-      }
-      const adminAtualizado = await admin.save()
-      res.status(200).json(adminAtualizado)
-  }catch (error){
-      res.status(500).json({ message: error.message})
-  }
-}
-const updateAbrigo = async (req, res) => {
-    try{
-        const admin = await Admin.findById(req.params.id)
-        if(admin == null){
-            return res.status(404).json({message: "Administrador não encontrado."})
-        }
-        if(req.body.abrigo != null){
-            admin.abrigo = req.body.abrigo
-        }
-        const adminAtualizado = await admin.save()
-        res.status(200).json(adminAtualizado)
-    }catch (error){
-        res.status(500).json({ message: error.message})
+     
+      const adminAtualizado = await admin.save();
+      res.status(200).json(adminAtualizado);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
-}   
+  };
+
 const deleteById = async (req, res) => {
   const admin = await Admin.findById(req.params.id)
       if(admin == null){
@@ -116,16 +68,12 @@ const deleteById = async (req, res) => {
       } catch (error){
           res.status(500).json({ message: error.message})
       }
-}
+};
 
 module.exports = {
     getAll,
     getById,
     createAdmin,
-    updateNome,
-    updateEndereco,
-    updateFone,
-    updateEmail,
-    updateAbrigo,
+    updateAdmin,
     deleteById
 }

@@ -64,10 +64,10 @@ Esta API está sendo escutada localmente na ``porta 8080 `` e para que as rotas 
 |POST | /abrigo | Cria um novo cadastro com base no abrigoSchema.|
 |POST | /admin | Cria um novo cadastro com base no adminSchema.|
 |POST | /tutor | Cria um novo cadastro com base no tutorSchema.|
-|PATCH | /pet/:id | Edita um pet correspondente ao ID requerido.|
-|PATCH | /abrigo/:id | Edita um abrigo correspondente ao ID requerido.|
-|PATCH | /admin/:id | Edita um administrador correspondente ao ID requerido.|
-|PATCH | /tutot/:id | Edita um tutot correspondente ao ID requerido.|
+|PATCH | /pet/:id | Edita qualquer atributo de um pet correspondente ao ID requerido.|
+|PATCH | /abrigo/:id | Edita qualquer atributo de um abrigo correspondente ao ID requerido.|
+|PATCH | /admin/:id | Edita qualquer atributo de um administrador correspondente ao ID requerido.|
+|PATCH | /tutot/:id | Edita qualquer atributo de um tutot correspondente ao ID requerido.|
 |DELETE | /pet/:id | Exclui o cadastro de um pet correspondente ao ID requerido.|
 |DELETE | /abrigo/:id |Exclui o cadastro de um abrigo correspondente ao ID requerido.|
 |DELETE | /admin/:id | Exclui o cadastro de um admin correspondente ao ID requerido.|

@@ -4,11 +4,11 @@ const Tutor= require('../models/tutor');
 const getAll = async (req, res) => {
     const tutores = await Tutor.find()
     res.status(200).json(tutores)
-}
+};
 const getById = async (req, res) => {
     const tutor = await Tutor.findById(req.params.id)
     res.status(200).json(tutor)
-} 
+}; 
 
 const  createTutor = async (req, res) => {
     const tutor = new Tutor({
@@ -29,67 +29,32 @@ const  createTutor = async (req, res) => {
     } catch(error) {
       res.status(400).json({ message: error.message})
     }
-}
-const updateNome = async (req, res) => {
-  try{
-      const tutor = await Tutor.findById(req.params.id)
-      if(tutor == null){
-          return res.status(404).json({message: "Tutor não encontrado."})
+};
+const updateTutor = async (req, res) => {
+    try {
+      const tutor = await Tutor.findById(req.params.id);
+      if (tutor == null)
+        return res.status(404).json({ message: "tutor não encontrado." });
+  
+      for (var prop in req.body) {
+        if (prop == "nome") {
+          tutor.nome = req.body[prop];
+        } else if (prop == "endereco") {
+          tutor.endereco = req.body[prop];
+        } else if (prop == "fone") {
+          tutor.fone = req.body[prop];
+        } else if (prop == "email") {
+          tutor.email = req.body[prop];
+        } 
       }
-      if(req.body.nome != null){
-          tutor.nome = req.body.nome
-      }
-      const tutorAtualizado = await tutor.save()
-      res.status(200).json(tutorAtualizado)
-  }catch (error){
-      res.status(500).json({ message: error.message})
-  }
-}
-const updateEndereco = async (req, res) => {
-  try{
-      const tutor = await Tutor.findById(req.params.id)
-      if(tutor == null){
-          return res.status(404).json({message: "Tutor não encontrado."})
-      }
-      if(req.body.endereco != null){
-          tutor.endereco = req.body.endereco
-      }
-      const tutorAtualizado = await tutor.save()
-      res.status(200).json(tutorAtualizado)
-  }catch (error){
-      res.status(500).json({ message: error.message})
-  }
-}
-const updateFone = async (req, res) => {
-  try{
-      const tutor = await Tutor.findById(req.params.id)
-      if(tutor == null){
-          return res.status(404).json({message: "Tutor não encontrado."})
-      }
-      if(req.body.fone != null){
-          tutor.fone = req.body.fone
-      }
-      const tutorAtualizado = await tutor.save()
-      res.status(200).json(tutorAtualizado)
-  }catch (error){
-      res.status(500).json({ message: error.message})
-  }
-}
-const updateEmail = async (req, res) => {
-  try{
-      const tutor = await Tutor.findById(req.params.id)
-      if(tutor == null){
-          return res.status(404).json({message: "Tutor não encontrado."})
-      }
-      if(req.body.email != null){
-          tutor.email = req.body.email
-      }
-      const tutorAtualizado = await tutor.save()
-      res.status(200).json(tutorAtualizado)
-  }catch (error){
-      res.status(500).json({ message: error.message})
-  }
-}
+     
+      const tutorAtualizado = await tutor.save();
+      res.status(200).json(tutorAtualizado);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+
 const deleteById = async (req, res) => {
   const tutor = await Tutor.findById(req.params.id)
       if(tutor == null){
@@ -101,15 +66,12 @@ const deleteById = async (req, res) => {
       } catch (error){
           res.status(500).json({ message: error.message})
       }
-}
+};
 
 module.exports = {
     getAll,
     getById,
     createTutor,
-    updateNome,
-    updateEndereco,
-    updateFone,
-    updateEmail,
+    updateTutor,
     deleteById
 }

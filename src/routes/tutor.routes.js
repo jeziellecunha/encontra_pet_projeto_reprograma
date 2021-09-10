@@ -7,10 +7,7 @@ router.get("/:id", controller.getById)
 
 router.post("/", controller.createTutor)
 
-router.patch("/nome/:id", controller.updateNome)
-router.patch("/endereco/:id", controller.updateEndereco)
-router.patch("/fone/:id", controller.updateFone)
-router.patch("/email/:id", controller.updateEmail)
+router.patch("/:id", controller.updateTutor)
 
 router.delete("/:id", controller.deleteById)
 
