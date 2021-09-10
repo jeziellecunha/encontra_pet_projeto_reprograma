@@ -74,7 +74,7 @@ Esta API está sendo escutada localmente na ``porta 8080 `` e para que as rotas 
 |DELETE | /tutor/:id | Exclui o cadastro de um tutor correspondente ao ID requerido.|
 
 ### Desenvolvimento
-**Arquitetura MVC **
+
 ![Arquitetura MVC](arquiteturaMVC-EncontraPet.jpg)
 
 
